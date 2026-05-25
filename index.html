@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒙医正骨非遗 - 人类健康的共享智慧</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/index.css">
+   <style>
+       /* 基础样式 */
+       html, body {
+           margin: 0;
+           padding: 0;
+           min-height: 100vh;
+           width: 100vw;
+           overflow-x: hidden;
+       }
+       
+       body {
+           font-family: 'Noto Sans SC', sans-serif;
+           background-image: url("../img/02.png");
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+           background-color: #f0f0f0;
+       }
+       
+       :root {
+           --green: #1E3A2F;
+           --gold: #C9A03D;
+           --cream: #F9F8F4;
+           --text-dark: #222;
+           --text-mid: #555;
+           --text-light: #999;
+       }
+       * { margin:0; padding:0; box-sizing:border-box; }
+       
+       /* 导航栏标题改为黑色 */
+       .logo {
+           display: flex;
+           align-items: center;
+           gap: 12px;
+       }
+       .header-logo{
+           width: 50px;
+           height: 50px;
+           object-fit: contain;
+       }
+       .logo-text {
+           display: flex;
+           flex-direction: column;
+       }
+       .logo-text h1 {
+           font-size: 22px;
+           color: #000 !important; /* 组合标题黑色 */
+           font-weight: 700;
+       }
+       .logo-en {
+           font-size: 12px;
+           color: #222 !important; /* 英文副标题黑色 */
+           letter-spacing: 1px;
+           margin-top: 2px;
+       }
+       .navbar .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 20px;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+       .nav-links {
+           display: flex;
+           list-style: none;
+           gap: 30px;
+       }
+       .nav-links a {
+           text-decoration: none;
+           color: #333;
+           font-size: 15px;
+           transition: color 0.2s;
+       }
+       
+       /* 蒙医正骨板块 —— 半透明白色 已缩小 */
+       .heritage {
+           padding: 50px 30px;
+           background: rgba(255, 255, 255, 0.82);
+           border-radius: 12px;
+           margin: 60px auto;
+           max-width: 1000px; /* 整体宽度缩小 */
+       }
+       .section-inner {
+           max-width: 900px;
+           margin: 0 auto;
+           padding: 0;
+       }
+       .section-header {
+           text-align: center;
+           margin-bottom: 40px;
+       }
+       .section-label {
+           display: inline-flex; align-items: center; gap: 12px;
+           font-family: 'Cinzel', serif;
+           font-size: 10px;
+           color: var(--gold);
+           letter-spacing: 4px;
+           margin-bottom: 16px;
+       }
+       .section-label::before,
+       .section-label::after {
+           content: ''; width: 50px; height: 1px; background: var(--gold); opacity: 0.4;
+       }
+       .section-title {
+           font-family: 'Noto Serif SC', serif;
+           font-size: clamp(24px, 3vw, 34px);
+           font-weight: 900;
+           color: var(--green);
+           letter-spacing: 3px;
+           margin-bottom: 12px;
+       }
+       .section-subtitle {
+           font-size: 14px;
+           color: var(--text-mid);
+           letter-spacing: 1px;
+           line-height: 1.8;
+       }
+       .gold-line {
+           width: 60px; height: 1px;
+           background: var(--gold);
+           margin: 20px auto 0;
+           opacity: 0.5;
+       }
+       
+       /* 内容布局 */
+       .heritage-content {
+           display: grid;
+           grid-template-columns: 1fr;
+           gap: 40px;
+           align-items: center;
+       }
+       .heritage-left h3 {
+           font-family: 'Noto Serif SC', serif;
+           font-size: 20px;
+           color: var(--green);
+           margin-bottom: 24px;
+           letter-spacing: 2px;
+           font-weight: 700;
+       }
+       .heritage-desc {
+           font-size: 15px;
+           color: var(--text-mid);
+           line-height: 2;
+           margin-bottom: 32px;
+           text-align: justify;
+       }
+       .heritage-list {
+           display: flex;
+           flex-direction: column;
+           gap: 16px;
+       }
+       .feat-item {
+           display: flex;
+           align-items: flex-start;
+           gap: 16px;
+       }
+       .feat-icon {
+           width: 36px;
+           height: 36px;
+           background: var(--green);
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           color: #fff;
+           font-size: 16px;
+           flex-shrink: 0;
+       }
+       .feat-text h4 {
+           font-size: 15px;
+           color: var(--green);
+           margin-bottom: 4px;
+           font-weight: 600;
+       }
+       .feat-text p {
+           font-size: 13px;
+           color: var(--text-mid);
+           line-height: 1.7;
+       }
+       
+       .page-title{
+           text-align: center;
+           padding: 80px 20px 40px;
+           color: #fff;
+           text-shadow: 2px 2px 8px #333;
+           background: url("../img/banner.jpg") center/cover no-repeat;
+           background-blend-mode: overlay;
+           background-color: rgba(0,0,0,0.4);
+       }
+       .page-title h1{
+           font-size: 38px;
+           margin-bottom: 12px;
+       }
+       .page-title p.sub-title{
+           font-size: 20px;
+           margin: 8px 0;
+       }
+       .intro-text{
+           max-width: 900px;
+           margin: 20px auto;
+           line-height: 1.8;
+           font-size: 16px;
+       }
+       
+       .enter-btn{
+           display: block;
+           width: 220px;
+           height: 70px;
+           line-height: 70px;
+           margin: 30px auto;
+           background: #8b4513;
+           color: #fff;
+           text-align: center;
+           border-radius: 50px;
+           font-size: 18px;
+           cursor: pointer;
+           box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+           transition: all 0.3s ease;
+       }
+       .enter-btn:hover{
+           transform: translateY(-3px);
+           background: #a0522d;
+       }
+       
+       /* 核心理念 */
+       .idea-section{
+           padding: 100px 20px;
+           max-width: 1400px;
+           margin: 0 auto;
+       }
+       .idea-section h2{
+           text-align: center;
+           color: #fff;
+           font-size: 36px;
+           font-family: 'Noto Serif SC', serif;
+           margin-bottom: 50px;
+           text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+       }
+       .idea-img-wrap{
+           display: grid;
+           grid-template-columns: repeat(4,1fr);
+           gap: 30px;
+           margin: 0 auto 60px;
+       }
+       .idea-img-wrap img{
+           width: 100%;
+           height: 320px;
+           object-fit: cover;
+           border-radius: 16px;
+           box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+           transition: 0.4s ease;
+       }
+       .idea-img-wrap img:hover{
+           transform: scale(1.08);
+       }
+       .idea-text-group{
+           display: grid;
+           grid-template-columns: repeat(4,1fr);
+           gap: 30px;
+       }
+       .idea-text-item{
+           background: rgba(255,255,255,0.95);
+           padding: 40px 32px;
+           border-radius: 16px;
+           box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+           transition: 0.3s ease;
+       }
+       .idea-text-item:hover{
+           transform: translateY(-6px);
+           box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+       }
+       .idea-text-item h3{
+           color: var(--gold);
+           font-size: 22px;
+           font-family: 'Noto Serif SC', serif;
+           margin-bottom: 18px;
+           text-align: center;
+           font-weight: 700;
+       }
+       .idea-text-item p{
+           line-height: 1.9;
+           font-size: 15px;
+           color: #333;
+       }
+       
+       /* 动画 */
+       .fade-up {
+         opacity: 0;
+         transform: translateY(30px);
+         transition: 0.7s ease;
+       }
+       .fade-up.visible {
+         opacity: 1;
+         transform: translateY(0);
+       }
+       
+       /* 页脚 */
+       footer {
+           background: var(--green);
+           padding: 56px 60px 32px;
+           color: var(--cream);
+       }
+       .footer-top {
+           display: grid;
+           grid-template-columns: 2fr 1fr 1fr 1fr;
+           gap: 48px;
+           padding-bottom: 40px;
+           border-bottom: 1px solid rgba(201,160,60,0.15);
+           margin-bottom: 32px;
+       }
+       .footer-brand h3 {
+           font-family: 'Noto Serif SC', serif;
+           font-size: 18px;
+           color: var(--gold);
+           letter-spacing: 3px;
+           margin-bottom: 10px;
+       }
+       .footer-brand p {
+           font-size: 11px;
+           color: rgba(249,246,240,0.4);
+           line-height: 2;
+       }
+       .footer-col h4 {
+           font-family: 'Noto Serif SC', serif;
+           font-size: 13px;
+           color: var(--gold);
+           letter-spacing: 2px;
+           margin-bottom: 16px;
+       }
+       .footer-col p, .footer-col a {
+           font-size: 11.5px;
+           color: rgba(249,246,240,0.45);
+           line-height: 2.2;
+           text-decoration: none;
+       }
+       .footer-col a:hover { color: var(--gold); }
+       .footer-bottom {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+       .footer-bottom p {
+           font-size: 11px;
+           color: rgba(249,246,240,0.3);
+       }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="../img/logo.jpg" alt="蒙医正骨非遗LOGO" class="header-logo">
+            <div class="logo-text">
+                <h1>传统正骨非遗</h1>
+                <div class="logo-en">National Intangible Cultural Heritage</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+           <li><a href="index.html" class="active">首页</a></li>
+           <li><a href="jieshao.html">特色疗法</a></li>
+           <li><a href="zhinan.html" >传承指南</a></li>
+           <li><a href="history.html">智慧故事</a></li>
+           <li><a href="zuopin.html">术语规范</a></li>
+           <li><a href="shufa.html">非遗文创</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- 首页标题 -->
+    <div class="page-title">
+        <h1>蒙医正骨非遗· 人类健康的共享智慧</h1>
+        <p class="sub-title">国家级非物质文化遗产</p>
+        <p class="sub-title">游牧生活中的智慧结晶</p>
+        <p class="intro-text">
+从游牧民族的马背到国家级非遗名录，蒙医正骨术穿越千年，仍以双手的温度治愈损伤的骨骼与心灵。我们以数十篇文献为根基，以对非遗传承人巴虎山、包青松的实地访谈为桥梁，将术语、治疗故事与文创符号编织成可触摸的传播语言。这是一场让非遗从“民族技艺”走向“世界共享”的迁徙一一让草原的骨伤智慧，成为人类健康与命运共同体中的共享记忆。
+        </p>
+        <div class="enter-btn" id="scrollBtn">进入草原医阁</div>
+    </div>
+
+    <!-- 核心理念 -->
+    <section class="idea-section" id="coreIdea">
+        <h2>核心理念</h2>
+        <div class="idea-img-wrap">
+            <img src="../img/112.jpg" alt="身心统一">
+            <img src="../img/113.jpg" alt="动静结合">
+            <img src="../img/111.png" alt="内外结合">
+            <img src="../img/21.png" alt="天人合一">
+        </div>
+        <div class="idea-text-group">
+            <div class="idea-text-item">
+                <h3>身心统一</h3>
+                <p>蒙医认为，骨折创伤不仅伤及躯体，还易催生恐惧、焦躁等负面情绪，造成肌肉僵硬、气血阻滞，延缓骨骼愈合。正骨复位前会采用喷酒、舒缓引导等方式安抚心绪，放松肌体，秉持治身先治心思想，契合现代身心协同诊疗理念。</p>
+            </div>
+            <div class="idea-text-item">
+                <h3>动静结合</h3>
+                <p>采用柳木夹板弹性固定方式，稳固骨折部位同时保留骨骼生理微动空间，刺激骨痂生长。遵循分期锻炼准则，循序渐进活动关节，兼顾骨骼稳固性，有效规避肌肉萎缩、关节僵硬问题，加速伤势恢复。</p>
+            </div>
+            <div class="idea-text-item">
+                <h3>内外结合</h3>
+                <p>依托人体自愈本能，以手法复位、外部固定为辅，搭配蒙药内服、膳食调理，平衡赫依、希拉、巴达干三大本源。分阶段对症用药，化瘀、接骨、养血逐层调理，内外协同作用，推动骨骼完整愈合。</p>
+            </div>
+            <div class="idea-text-item">
+                <h3>天人合一</h3>
+                <p>诊疗顺应四季气候特点，依据寒暑调整正骨手法与理疗方式。取材均选用草原天然物料，柳木、毛毡、马奶酒等原生态材料温和无刺激，贴合自然规律，诠释人与自然和谐共生的传统诊疗思想。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 蒙医正骨 · 半透明板块 -->
+    <section class="heritage" id="heritage">
+        <div class="section-inner">
+            <div class="section-header fade-up">
+                <div class="section-label">INTANGIBLE CULTURAL HERITAGE</div>
+                <h2 class="section-title">蒙医正骨 · 国家级非物质文化遗产</h2>
+                <p class="section-subtitle">源于游牧文明，传承三千年，守护生命与骨骼的智慧</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="heritage-content">
+                <div class="heritage-left fade-up">
+                    <h3>国家级非遗 · 蒙医正骨疗法</h3>
+                    <p class="heritage-desc">
+                        蒙医正骨是蒙古族传统医学的核心技艺，以“不开刀、少痛苦、恢复快”为特色，依靠手法复位、小夹板固定、喷酒按摩、草药外敷等自然疗法，治疗骨折、脱位、颈肩腰腿痛等骨伤疾病。2011年，蒙医正骨疗法被列入**国家级非物质文化遗产代表性项目名录**，成为中华医学宝库中的珍贵财富。
+                    </p>
+                    <div class="heritage-list">
+                        <div class="feat-item">
+                       
+                            <div class="feat-text">
+                                <h4>国家级非遗认证</h4>
+                                <p>2011年列入第三批国家级非物质文化遗产名录</p>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                      
+                            <div class="feat-text">
+                                <h4>自然绿色疗法</h4>
+                                <p>不开刀、微创、无金属植入，保留骨骼原生修复能力</p>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                      
+                            <div class="feat-text">
+                                <h4>世代口耳传承</h4>
+                                <p>家族传承、师徒传承，保留最纯正的游牧正骨技艺</p>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                       
+                            <div class="feat-text">
+                                <h4>世界医学价值</h4>
+                                <p>被多国医学机构研究，成为传统骨伤疗法的典范</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <h3>传统正骨非遗</h3>
+                <p>中央民族大学中国少数民族语言文学学院<br>「传统正骨非遗的健康智慧挖掘与共享实践——探讨民族医药非遗对人类命运与健康共同体的贡献」项目团队</p>
+                <p>数据来源：基于 31 篇文献与田野访谈</p>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <p>内蒙古自治区呼和浩特市</p>
+                <p>内蒙古国际蒙医医院</p>
+                <p>电话：0471-5182020</p>
+            </div>
+            <div class="footer-col">
+                <h4>开放时间</h4>
+                <p>周二至周五 9:00-17:00</p>
+                <p>周一闭馆（法定节假日除外）</p>
+                <p>免费参观</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>项目成员：吉日歌、丹妮、萨其日格、吴之晔、麦庭畅 · 指导教师：阿里穆斯教授</p>
+            <p>© 2026 蒙医正骨非物质文化遗产项目团队 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(i => i.isIntersecting && i.target.classList.add('visible'))
+        }, { threshold: 0.1 })
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // 平滑滚动
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollBtn = document.getElementById('scrollBtn');
+            const coreIdea = document.getElementById('coreIdea');
+            scrollBtn.addEventListener('click',function(){
+                coreIdea.scrollIntoView({behavior:"smooth"});
+            });
+
+            // 导航高亮
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
