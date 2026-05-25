@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骨头会说话 - 蒙医正骨健康故事</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/history.css">
+  <style>
+/* 全局配色变量 */
+:root {
+  --green: #1E3A2F;
+  --green-mid: #2a5040;
+  --green-light: #3d7060;
+  --gold: #C9A03D;
+  --gold-light: #e8c06a;
+  --cream: #F9F6F0;
+  --warm-white: #faf8f4;
+  --text-dark: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-light: #888;
+  --border: rgba(201,160,61,0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 统一全局背景 */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-image: url("../img/03.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #f0f0f0;
+  color: var(--text-dark);
+}
+
+/* 诊疗故事主板块 —— 缩小 + 半透明 */
+.stories {
+  background: rgba(30, 58, 47, 0.85);
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+  max-width: 1100px;
+  margin: 60px auto;
+  border-radius: 16px;
+}
+
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1.3;
+  color: var(--cream);
+}
+
+.section-subtitle {
+  margin-top: 12px;
+  font-size: 13px;
+  color: rgba(249,246,240,0.5);
+  letter-spacing: 2px;
+}
+
+.gold-line {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto 0;
+  opacity: 0.6;
+}
+
+/* 引言 */
+.stories-quote {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: rgba(249,246,240,0.6);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* 诊疗图片展示区 —— 4张图 */
+.stories-images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.story-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* 故事卡片网格布局 */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.story-card {
+  background: rgba(249,246,240,0.04);
+  border: 1px solid rgba(201,160,61,0.2);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: default;
+  border-radius: 12px;
+  min-height: 380px;
+}
+
+.story-card:hover {
+  background: rgba(249,246,240,0.08);
+  border-color: rgba(201,160,61,0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.story-num {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: 'Cinzel', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: rgba(201,160,61,0.12);
+  line-height: 1;
+}
+
+.story-plant {
+  font-size: 26px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.story-card h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.story-card p {
+  font-size: 14px;
+  color: rgba(249,246,240,0.65);
+  line-height: 2;
+}
+
+.story-quote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 11px 20px;
+  border: 1px solid rgba(201,160,61,0.3);
+  font-size: 12.5px;
+  color: rgba(201,160,61,0.8);
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s;
+  border-radius: 6px;
+}
+
+.story-quote-btn:hover {
+  background: rgba(201,160,61,0.12);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* 导航栏 */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.header-logo{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+.logo-text h1 {
+    font-size: 22px;
+    color: #000 !important;
+    font-weight: 700;
+}
+.logo-en {
+    font-size: 12px;
+    color: #222 !important;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+/* Banner */
+.page-header {
+    text-align: center;
+    padding: 120px 20px;
+    min-height: 480px;
+    color: #fff;
+    text-shadow: 2px 2px 8px #333;
+    background: url("../img/banner.jpg") center center / cover no-repeat;
+    background-blend-mode: overlay;
+    background-color: rgba(0,0,0,0.4);
+    margin: 0;
+    width: 100vw;
+    max-width: 100%;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.page-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    margin-bottom: 16px;
+}
+.page-header p {
+    font-size: 19px;
+    opacity: 0.98;
+}
+
+/* 动画 */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 底部 */
+footer {
+    background: var(--green);
+    padding: 56px 60px 32px;
+    color: var(--cream);
+}
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(201,160,61,0.15);
+    margin-bottom: 32px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-brand h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+.footer-brand p {
+    font-size: 11px;
+    color: rgba(249,246,240,0.4);
+    line-height: 2;
+    letter-spacing: 0.5px;
+}
+.footer-col h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+.footer-col p, .footer-col a {
+    display: block;
+    font-size: 11.5px;
+    color: rgba(249,246,240,0.45);
+    line-height: 2.2;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-bottom p {
+    font-size: 11px;
+    color: rgba(249,246,240,0.3);
+    letter-spacing: 1px;
+}
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="../img/logo.jpg" alt="蒙医正骨非遗LOGO" class="header-logo">
+            <div class="logo-text">
+                <h1>传统正骨非遗</h1>
+                <div class="logo-en">National Intangible Cultural Heritage</div>
+            </div>
+        </div>
+            <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="jieshao.html">特色疗法</a></li>
+            <li><a href="zhinan.html" >传承指南</a></li>
+            <li><a href="history.html" class="active">智慧故事</a></li>
+            <li><a href="zuopin.html">术语规范</a></li>
+            <li><a href="shufa.html">非遗文创</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h2>诊疗故事分享</h2>
+            <p>健康故事分享 · 来自非遗传承人的真实诊疗记录</p>
+        </div>
+    </header>
+
+<!-- 音频播放器（隐藏） -->
+<audio id="audio1" src="../img/音频1.mp3"></audio>
+<audio id="audio2" src="../img/音频2(1).mp3"></audio>
+<audio id="audio3" src="../img/音频3(1).mp3"></audio>
+
+<section class="stories" id="stories">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-label">Health Stories</div>
+      <h2 class="section-title">诊疗故事分享</h2>
+      <p class="section-subtitle">真实案例 · 口述记录</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="stories-quote fade-up">
+      「每一块骨头都有它的旅程，而正骨师是那些旅程的听译者。」
+    </div>
+
+    <div class="stories-images fade-up">
+      <img src="../img/图1.png" class="story-img" alt="诊疗展示">
+      <img src="../img/图2.png" class="story-img" alt="诊疗展示">
+      <img src="../img/图3.jpg" class="story-img" alt="诊疗展示">
+      <img src="../img/图4.png" class="story-img" alt="诊疗展示">
+    </div>
+
+    <div class="stories-grid">
+      <div class="story-card fade-up fade-up-delay-1">
+        <div class="story-num">01</div>
+        <h3>三秒钟的奇迹<br>——化工学校学生的脚踝</h3>
+        <p>一位学生踢球时严重崴脚，脚踝完全变形。患者被送到医院时，还惊慌地给父亲打电话。巴老师仅用三秒钟便手法复位成功，患者当即恢复行动能力，现场记者对此神奇医术大为赞叹。</p>
+        <button class="story-quote-btn" onclick="playAudio(1)">倾听访谈原声 →</button>
+      </div>
+
+      <div class="story-card fade-up fade-up-delay-2">
+        <div class="story-num">02</div>
+        <h3>从「卧床两个月」<br>到当场消肿</h3>
+        <p>腰椎骨折患者腰部肿胀严重，初诊建议长期卧床休养。转诊接受蒙医正骨手法治疗后，患处肿胀即刻消退。前后影像对比差异显著，直观展现出传统正骨疗法独到的治疗效果。</p>
+        <button class="story-quote-btn" onclick="playAudio(2)">倾听访谈原声 →</button>
+      </div>
+
+      <div class="story-card fade-up fade-up-delay-3">
+        <div class="story-num">03</div>
+        <h3>十三岁的第一次接骨<br>——包青松老师的传承起点</h3>
+        <p>年少时便独立完成肩关节脱位复位，这次经历坚定其钻研正骨技艺的决心。后续深耕专业学识，远赴海外进修，将传统蒙医正骨技法与现代医学理念相互融合创新。</p>
+        <button class="story-quote-btn" onclick="playAudio(3)">倾听访谈原声 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// 播放音频
+function playAudio(num) {
+  // 先暂停所有音频
+  document.querySelectorAll('audio').forEach(a => a.pause());
+  
+  // 播放对应音频
+  const audio = document.getElementById('audio' + num);
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play();
+  }
+}
+
+// 滚动动画
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>传统正骨非遗</h3>
+      <p>中央民族大学中国少数民族语言文学学院<br>「传统正骨非遗的健康智慧挖掘与共享实践——探讨民族医药非遗对人类命运与健康共同体的贡献」项目团队</p>
+      <br>
+      <p>数据来源：基于 31 篇文献与田野访谈</p>
+    </div>
+    <div class="footer-col">
+      <h4>联系我们</h4>
+      <p>内蒙古自治区呼和浩特市</p>
+      <p>内蒙古国际蒙医医院</p>
+      <p>电话：071-5182020</p>
+    </div>
+    <div class="footer-col">
+      <h4>开放时间</h4>
+      <p>周二至周五 9:00-17:00</p>
+      <p>周一闭馆（法定节假日除外）</p>
+      <p>免费参观</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>项目成员：吉日歌、丹妮、萨其日格、吴之晔、麦庭畅 · 指导教师：阿里穆斯教授</p>
+    <p>© 2026 蒙医正骨非物质文化遗产传承基地 版权所有</p>
+  </div>
+</footer>
+</body>
+</html>

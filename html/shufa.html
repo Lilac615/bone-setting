@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文创符号 - 蒙医正骨非遗</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/guide.css">
+    <style>
+        :root {
+            --green: #1E3A2F;
+            --gold: #C9A03D;
+            --cream: #F9F8F4;
+            --text-dark: #222;
+            --text-mid: #555;
+            --text-light: #999;
+        }
+
+        /* 全局统一背景 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: "Noto Sans SC", sans-serif;
+            background-image: url("../img/05.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f0f0f0;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        /* ========== 导航栏 100% 和首页一致 ========== */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-logo{
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-text h1 {
+            font-size: 22px;
+            color: #000 !important;
+            font-weight: 700;
+        }
+        .logo-en {
+            font-size: 12px;
+            color: #222 !important;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+   
+/* ==========  Banner 加强：全屏、完整显示 ========== */
+.page-header {
+    text-align: center;
+    padding: 120px 20px;      /* 加高高度 */
+    min-height: 480px;        /* 保证图片完全展示 */
+    color: #fff;
+    text-shadow: 2px 2px 8px #333;
+    background: url("../img/banner.jpg") center center / cover no-repeat;
+    background-blend-mode: overlay;
+    background-color: rgba(0,0,0,0.4);
+    margin: 0;
+    width: 100vw;             /* 全屏宽度 */
+    max-width: 100%;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.page-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;          /* 加大标题更大气 */
+    margin-bottom: 16px;
+}
+.page-header p {
+    font-size: 19px;
+    opacity: 0.98;
+}
+
+        /* 引言 */
+        .creative-intro {
+            text-align: center;
+            font-size: 18px;
+            color: #8B4513;
+            margin: 50px 0 30px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* 桌面静物陈列 */
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        .creative-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        .creative-img {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .creative-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .creative-card h3 {
+            color: #8B4513;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .creative-tag {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 结语区域 */
+        .conclusion {
+            background: rgba(255,255,255,0.9);
+            padding: 50px 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 60px auto;
+            max-width: 1000px;
+            line-height: 1.9;
+            color: #333;
+            font-size: 16px;
+        }
+        .conclusion h2 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* 统一高端尾栏 */
+        footer {
+            background: var(--green);
+            padding: 56px 60px 32px;
+            color: var(--cream);
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(201,160,61,0.15);
+            margin-bottom: 32px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-brand h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .footer-brand p {
+            font-size: 11px;
+            color: rgba(249,246,240,0.4);
+            line-height: 2;
+            letter-spacing: 0.5px;
+        }
+        .footer-col h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 13px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .footer-col p, .footer-col a {
+            display: block;
+            font-size: 11.5px;
+            color: rgba(249,246,240,0.45);
+            line-height: 2.2;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-bottom p {
+            font-size: 11px;
+            color: rgba(249,246,240,0.3);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 导航栏 100% 与首页一致 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/logo.jpg" alt="蒙医正骨非遗LOGO" class="header-logo">
+                <div class="logo-text">
+                    <h1>传统正骨非遗</h1>
+                    <div class="logo-en">National Intangible Cultural Heritage</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+               <li><a href="index.html">首页</a></li>
+               <li><a href="jieshao.html">特色疗法</a></li>
+               <li><a href="zhinan.html">传承指南</a></li>
+               <li><a href="history.html">智慧故事</a></li>
+               <li><a href="zuopin.html">术语规范</a></li>
+               <li><a href="shufa.html" class="active">非遗文创</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 加宽加高全屏Banner -->
+    <header class="page-header">
+        <div class="container">
+            <h2>文创符号</h2>
+            <p>把非遗揉进日常，让每个人都能带走一缕草原的风。</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- 引言 -->
+        <div class="creative-intro">
+            把非遗揉进日常，让每个人都能带走一缕草原的风。
+        </div>
+
+        <!-- 桌面静物陈列 -->
+        <div class="creative-grid">
+            <div class="creative-card">
+                <div class="creative-img">
+                    <img src="../img/7.jpg" alt="品牌LOGO">
+                </div>
+                <h3>蒙医正骨品牌LOGO</h3>
+                <div class="creative-tag">设计关键词：草原、手掌、骨骼、传承</div>
+            </div>
+
+            <div class="creative-card">
+                <div class="creative-img">
+                    <img src="../img/22.jpg" alt="二维码卡片">
+                </div>
+                <h3>故事二维码卡片</h3>
+                <div class="creative-tag">扫一扫，草原的健康故事就落入手心。</div>
+            </div>
+
+            <div class="creative-card">
+                <div class="creative-img">
+                    <img src="../img/20.png" alt="术语手册">
+                </div>
+                <h3>蒙汉对照术语手册</h3>
+                <div class="creative-tag">设计关键词：三语对照、便携、轻学术</div>
+            </div>
+
+            <div class="creative-card">
+                <div class="creative-img">
+                    <img src="../img/6f60cee408a4154e0172cac1d8492df4.jpg" alt="宣传海报">
+                </div>
+                <h3>主题宣传海报</h3>
+                <div class="creative-tag">设计关键词：极简、大标题、负空间</div>
+            </div>
+
+            <div class="creative-card">
+                <div class="creative-img">
+                    <img src="../img/21.png" alt="周边衍生品">
+                </div>
+                <h3>周边衍生品</h3>
+                <div class="creative-tag">帆布袋、书签、徽章、文创礼盒</div>
+            </div>
+        </div>
+
+        <!-- 结语 -->
+        <div class="conclusion {
+            background: rgba(255,255,255,0.9);
+            padding: 50px 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 60px auto;
+            max-width: 1000px;
+            line-height: 1.9;
+            color: #333;
+            font-size: 16px;
+        }
+        .conclusion h2 {
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }">
+            <h2>草原之上，星火相连</h2>
+            <p>
+                从马背到都市，从口传到二维码，蒙医正骨从未离开过人的掌心。<br>
+                我们记录、翻译、设计，不是为了把它锁进遗产的玻璃柜，而是让它成为全世界都可以使用的健康语言。<br>
+                愿这门用手思考的学问，在人类健康共同体的天空中，如草原上的星，虽远犹亮。
+            </p>
+        </div>
+
+    </main>
+
+<!-- 页脚 -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>传统正骨非遗</h3>
+      <p>中央民族大学中国少数民族语言文学学院<br>「传统正骨非遗的健康智慧挖掘与共享实践——探讨民族医药非遗对人类命运与健康共同体的贡献」项目团队</p>
+      <p>数据来源：基于 31 篇文献与田野访谈</p>
+    </div>
+    <div class="footer-col">
+      <h4>联系我们</h4>
+      <p>内蒙古自治区呼和浩特市</p>
+      <p>内蒙古国际蒙医医院</p>
+      <p>电话：0471-5182020</p>
+    </div>
+    <div class="footer-col">
+      <h4>开放时间</h4>
+      <p>周二至周五 9:00-17:00</p>
+      <p>周一闭馆（法定节假日除外）</p>
+      <p>免费参观</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>项目成员：吉日歌、丹妮、萨其日格、吴之晔、麦庭畅 · 指导教师：阿里穆斯教授</p>
+    <p>© 2026 蒙医正骨非物质文化遗产传承基地 版权所有</p>
+  </div>
+</footer>
+
+</body>
+</html>
